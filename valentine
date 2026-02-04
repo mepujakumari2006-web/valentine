@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Priyanshu ❤️ Puja</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(#ffd1e8,#ffeef6);
+  overflow:hidden;
+  font-family:'Comic Sans MS', cursive;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.float{
+  position:absolute;
+  font-size:26px;
+  animation:float 6s infinite ease-in-out;
+}
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-25px);}
+  100%{transform:translateY(0);}
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(255,0,100,.3);
+  z-index:10;
+  width:330px;
+}
+
+.cats{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  margin-bottom:10px;
+}
+.cat{
+  text-align:center;
+  animation:wiggle 2s infinite;
+}
+@keyframes wiggle{
+  0%{transform:rotate(0deg)}
+  50%{transform:rotate(3deg)}
+  100%{transform:rotate(0deg)}
+}
+.cat img{ width:90px; }
+.name{
+  background:pink;
+  padding:4px 10px;
+  border-radius:12px;
+  font-size:14px;
+  margin-top:4px;
+}
+
+button{
+  padding:10px 25px;
+  border:none;
+  border-radius:20px;
+  font-size:18px;
+  cursor:pointer;
+  margin:10px;
+}
+#yes{ background:hotpink; color:white; }
+#no{ background:#ddd; position:absolute; }
+
+#result{
+  display:none;
+  margin-top:15px;
+  color:crimson;
+  font-size:18px;
+}
+.ribbon{
+  background:red;
+  color:white;
+  padding:10px;
+  border-radius:15px;
+  margin-bottom:10px;
+}
+.msg{
+  background:#fff0f6;
+  padding:12px;
+  border-radius:15px;
+  margin-top:10px;
+  font-size:16px;
+}
+
+.confetti{
+  position:absolute;
+  font-size:22px;
+  animation:fall 3s linear infinite;
+}
+@keyframes fall{
+  0%{top:-10%;}
+  100%{top:110%;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- floating decor -->
+<div class="float" style="top:10%;left:15%">💖</div>
+<div class="float" style="top:20%;left:70%">💕</div>
+<div class="float" style="top:60%;left:10%">🎀</div>
+<div class="float" style="top:75%;left:80%">🌹</div>
+
+<div class="card">
+
+  <div class="cats">
+    <div class="cat">
+      <img src="https://i.imgur.com/JYUb9kF.png">
+      <div class="name">🐱 Priyanshu</div>
+    </div>
+    <div class="cat">
+      <img src="https://i.imgur.com/4AiXzf8.png">
+      <div class="name">🐱 Puja</div>
+    </div>
+  </div>
+
+  <h3>Will you be my Valentine? 💌</h3>
+
+  <button id="yes">YES 💖</button>
+  <button id="no">NO 😅</button>
+
+  <div id="result">
+    <div class="ribbon">🎀 Congratulations 🎀</div>
+    Priyanshu & Puja 💕 <br>
+    You are officially Valentines 💘
+
+    <div class="msg">
+      You are very special to me.<br>
+      I always want you to be my Valentine,<br>
+      because being with you makes me feel truly happy.<br>
+      Love you 💖
+    </div>
+
+    🎁 🍫 🧸 🌹 💕
+  </div>
+</div>
+
+<!-- PERFECT – Ed Sheeran (plays after YES) -->
+<iframe id="music"
+  width="0" height="0"
+  src=""
+  frameborder="0"
+  allow="autoplay">
+</iframe>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const result = document.getElementById("result");
+const music = document.getElementById("music");
+
+noBtn.addEventListener("mouseover",()=>{
+  noBtn.style.left = Math.random()*80 + "%";
+  noBtn.style.top  = Math.random()*80 + "%";
+});
+
+yesBtn.addEventListener("click",()=>{
+  result.style.display="block";
+  yesBtn.style.display="none";
+  noBtn.style.display="none";
+
+  // start Perfect – Ed Sheeran
+  music.src =
+   "https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1&loop=1&playlist=2Vv-BfVoq4g";
+
+  // confetti
+  for(let i=0;i<25;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.innerHTML=["💖","🎉","🎀","💕","🌸"][Math.floor(Math.random()*5)];
+    c.style.left=Math.random()*100+"%";
+    c.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+});
+</script>
+
+</body>
+</html>
