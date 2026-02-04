@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Comic Sans MS', cursive;
+        text-align: center;
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        overflow: hidden;
+    }h1 {
+    margin-top: 40px;
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px 5px red;
+}
+
+.buttons {
+    margin-top: 30px;
+    position: relative;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background-color: red;
+    color: white;
+}
+
+#noBtn {
+    background-color: white;
+    color: red;
+    position: absolute;
+}
+
+.cats {
+    margin-top: 30px;
+    font-size: 22px;
+    color: white;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.hidden { display: none; }
+
+.ribbon {
+    font-size: 60px;
+    margin-top: 20px;
+    animation: cut 2s ease-in-out forwards;
+}
+
+@keyframes cut {
+    0% { transform: scale(1); }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.message {
+    font-size: 22px;
+    color: white;
+    margin-top: 20px;
+}
+
+</style>
+</head>
+<body><h1>Will You Be My Valentine? 💖</h1><div class="cats">
+🐱 Puja (Girl Cat) 💕 🐱 Priyanshu (Boy Cat)<br>
+They are hugging each other 🤗💞
+</div><div class="buttons">
+    <button id="yesBtn">Yes 💘</button>
+    <button id="noBtn">No 😢</button>
+</div><div id="celebration" class="hidden">
+    <div class="ribbon">🎀🎀🎀</div>
+    <div class="message">
+        🎉 Congratulations! You are my Valentine! 🎉<br><br>
+        Love you so much cutuu ❤️<br>
+        I am very glad to have you.<br>
+        I don't know why you don't love me,
+        but I love you always 💖
+    </div>
+</div><!-- Add your own downloaded mp3 file named "perfect.mp3" in same folder --><audio id="song" src="perfect.mp3"></audio>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const celebration = document.getElementById("celebration");
+    const song = document.getElementById("song");
+
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.floor(Math.random() * window.innerWidth - 100);
+        const y = Math.floor(Math.random() * window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+        celebration.classList.remove("hidden");
+        song.play();
+    });
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        const colors = ["❤️","💖","💛"];
+        heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+
+    setInterval(createHeart, 300);
+</script></body>
+</html>
